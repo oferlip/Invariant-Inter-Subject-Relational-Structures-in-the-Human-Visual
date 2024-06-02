@@ -145,39 +145,6 @@ def spearman_matrix(features_1, features_2, should_normalize=False):
     return stats.spearmanr(features_1, features_2, axis=1)[0][:features_1.shape[0], features_1.shape[0]:]
 
 
-
-
-# def align_features_to_nearest(correlation_method, take_max=True):
-#     def align_features_to_nearest_helper(features_1, features_2):
-#         if features_1.shape[1] > features_2.shape[1]:
-#             features_2, features_1 = features_1, features_2
-#
-#         num_features_1 = features_1.shape[1]
-#         num_features_2 = features_2.shape[1]
-#
-#         used_indexes_features_2 = []
-#         unused_indexes_features_2 = [i for i in range(num_features_2)]
-#         for i in range(num_features_1):
-#             contact_i_correlations = []
-#             for j in unused_indexes_features_2:
-#                 contact_i_correlations.append((correlation_method(features_2[:, j], features_1[:, i]), j))
-#             try:
-#                 sorted_correlations_indexes = sorted(contact_i_correlations, key=lambda x: x[0])
-#             except:
-#                 a = 3
-#                 sorted_correlations_indexes = sorted(contact_i_correlations, key=lambda x: x[0])
-#
-#             if take_max:
-#                 best_index = sorted_correlations_indexes[-1][1]
-#             else:
-#                 best_index = sorted_correlations_indexes[0][1]
-#             used_indexes_features_2.append(best_index)
-#             unused_indexes_features_2.remove(best_index)
-#
-#         return features_1, features_2[:, used_indexes_features_2]
-#         # features_2 = features_2[]
-#     return align_features_to_nearest_helper
-
 def align_features_to_nearest(costs, features_1, features_2):
     row_ind, col_ind = linear_sum_assignment(costs)
     return features_1[:, row_ind], features_2[:, col_ind], row_ind, col_ind

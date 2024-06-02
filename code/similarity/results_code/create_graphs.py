@@ -7,12 +7,14 @@ from multiprocessing.pool import ThreadPool
 import itertools
 import sys
 
-sys.path.append(os.path.dirname("/Users/user/Personal/Master/Thesis/code_for_submission/code/similarity/"))
-sys.path.append(os.path.dirname("/Users/user/Personal/Master/Thesis/code_for_submission/code/"))
-sys.path.append(os.path.dirname("/Users/user/Personal/Master/Thesis/code_for_submission/"))
+absolute_path_to_repository = "Insert path to repository"
+
+sys.path.append(os.path.dirname(f"{absolute_path_to_repository}/code/similarity/"))
+sys.path.append(os.path.dirname(f"{absolute_path_to_repository}/code/"))
+sys.path.append(os.path.dirname(absolute_path_to_repository))
 
 
-from similarity.utils import seaborn_utils, model_utils
+from similarity.utils import seaborn_utils
 
 
 from statistics import mean

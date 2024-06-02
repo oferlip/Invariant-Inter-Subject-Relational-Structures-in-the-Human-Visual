@@ -86,8 +86,7 @@ def get_contact_x_y_z_coordinates(subject_name, electrode_name):
     files_info = pd.read_csv(elecSummary_allVisual_anatInfo_path)
     row = files_info[(files_info.subjNames.str.lower() == subject_name) &
                      (files_info.elecNums == int(electrode_name))]
-    # if row.shape == 0:
-    #     0, 0, 0
+    
     return row.afni_x.iloc[0], row.afni_y.iloc[0], row.afni_z.iloc[0]
 
 def get_contact_hamesphare(subject_name, electrode_name):
@@ -96,9 +95,7 @@ def get_contact_hamesphare(subject_name, electrode_name):
     files_info = pd.read_csv(elecSummary_allVisual_anatInfo_path)
     row = files_info[(files_info.subjNames.str.lower() == subject_name) &
                      (files_info.elecNums == int(electrode_name))]
-    # if row.shape == 0:
     try:
-    #     0, 0, 0
         ctx = row["aparcaseg_bestLabel"].iloc[0].lower()
         if "lh" in ctx or "left" in ctx:
             return "lh"

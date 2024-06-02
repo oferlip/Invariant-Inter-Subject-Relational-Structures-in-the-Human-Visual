@@ -1,7 +1,6 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
-import pandas as pd
 import numpy as np
 from dataclasses import dataclass
 from typing import List, Tuple, Optional
@@ -9,7 +8,6 @@ from scipy.spatial.distance import cdist
 from scipy import stats
 from typing import Optional
 import warnings
-from scipy.interpolate import make_interp_spline, BSpline
 
 warnings.filterwarnings("ignore", message="Polyfit may be poorly conditioned")
 
@@ -463,25 +461,13 @@ def output_heatmap(properties: HeatmapProperties, use_log_scale=False):
                 text += '.\nmean_without_diag value: ' + str(mean_without_diag) + ",std_without_diag value: " + str(
                     std_without_diag)
 
-                # flatten_map_without_diag_and_minus_1 = flatten_map_without_diag[flatten_map_without_diag > -1]
-                # mean_without_diag_and_minus_1 = round(np.mean(flatten_map_without_diag_and_minus_1), 2)
-                # std_without_diag_and_minus_1 = round(np.std(flatten_map_without_diag_and_minus_1), 2)
-
-                # '.\n mean_without_diag_and_minus_1: ' +  str(mean_without_diag_and_minus_1) + ",std_without_diag_and_minus_1 value: " + str(std_without_diag_and_minus_1),
-
             ax.text(0.85,
                     0.85,
                     text,
                     fontsize=20)  # add text
             ax.set_title(current_result.title, fontsize=40)
 
-            # if current_result.x_tick_label is not None:
-            #     ax.set_xticks(range(len(current_result.x_tick_label)))
-            #     ax.set_xticklabels(current_result.x_tick_label)
-            #
-            # if current_result.y_tick_label is not None:
-            #     ax.set_yticks(range(len(current_result.y_tick_label)))
-            #     ax.set_yticklabels(current_result.y_tick_label)
+          
 
             if use_log_scale:
                 current_map = np.log(current_map - np.min(current_map) + 0.0001)
@@ -661,13 +647,3 @@ def output_bar(properties: BarPlotProperties, marker_values: any = None):
 
     plt.close(fig)
 
-# iteration_values = [GraphIterationValues([1, 2, 3], [0.1, 0.2, 0.3], "first line title"),
-#                     GraphIterationValues(
-#                         [1, 2, 3], [0.2, 0.3, 0.4], "second line title"),
-#                     GraphIterationValues(
-#                         [1, 2, 3], [0.3, 0.4, 0.5], "third line title"),
-#                     GraphIterationValues([1, 2, 3], [0.4, 0.5, 0.6], "fourth line title")]
-
-# properties = OutputGraphPropertied(
-#     iteration_values, "x label", "y label", "plot title", "./output.jpeg")
-# save_graph(properties)

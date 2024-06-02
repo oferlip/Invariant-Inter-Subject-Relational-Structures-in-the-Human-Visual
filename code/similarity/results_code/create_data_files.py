@@ -19,9 +19,11 @@ import math
 import sys
 from operator import itemgetter
 
-sys.path.append(os.path.dirname("/Users/user/Personal/Master/Thesis/code_for_submission/code/similarity/"))
-sys.path.append(os.path.dirname("/Users/user/Personal/Master/Thesis/code_for_submission/code/"))
-sys.path.append(os.path.dirname("/Users/user/Personal/Master/Thesis/code_for_submission/"))
+
+absolute_path_to_repository = "Insert path to repository"
+sys.path.append(os.path.dirname(f"{absolute_path_to_repository}/code/similarity/"))
+sys.path.append(os.path.dirname(f"{absolute_path_to_repository}/code/"))
+sys.path.append(os.path.dirname(absolute_path_to_repository))
 
 from utils import numpy_utils
 from data_stucture.BrainData import BrainData, ContactKind, ImageKind
